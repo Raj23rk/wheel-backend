@@ -1,21 +1,35 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { HydratedDocument } from 'mongoose';
 
-export type OtpSessionDocument = OtpSession & Document;
+export type OtpSessionDocument =
+  HydratedDocument<OtpSession>;
 
-@Schema({ timestamps: true })
+@Schema({
+  timestamps: true,
+})
 export class OtpSession {
-  @Prop({ required: true })
+  @Prop({
+    required: true,
+    index: true,
+  })
   phone: string;
 
-  @Prop({ required: true })
+  @Prop({
+    required: true,
+  })
   code: string;
 
-  @Prop({ required: true })
+  @Prop({
+    required: true,
+    index: true,
+  })
   expiresAt: Date;
 
-  @Prop({ default: false })
+  @Prop({
+    default: false,
+  })
   verified: boolean;
 }
 
-export const OtpSessionSchema = SchemaFactory.createForClass(OtpSession);
+export const OtpSessionSchema =
+  SchemaFactory.createForClass(OtpSession);
