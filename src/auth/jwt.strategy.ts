@@ -8,7 +8,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: 'eyeland-spin-win-secret-key-2024',
+      secretOrKey: process.env.JWT_SECRET || 'eyeland-spin-win-secret-key-2024',
     });
   }
 

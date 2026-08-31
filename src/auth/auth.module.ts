@@ -11,7 +11,7 @@ import { AdminUser, AdminUserSchema } from '../schemas/admin-user.schema';
   imports: [
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
-      secret: 'eyeland-spin-win-secret-key-2024',
+      secret: process.env.JWT_SECRET || 'eyeland-spin-win-secret-key-2024',
       signOptions: { expiresIn: '24h' },
     }),
     MongooseModule.forFeature([{ name: AdminUser.name, schema: AdminUserSchema }]),

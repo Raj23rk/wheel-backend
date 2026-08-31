@@ -25,7 +25,9 @@ import { SmsService } from './sms.service';
     ]),
 
     JwtModule.register({
-      secret: process.env.JWT_SECRET,
+      secret:
+        process.env.JWT_SECRET ||
+        'eyeland-spin-win-secret-key-2024',
       signOptions: {
         expiresIn: '30m',
       },

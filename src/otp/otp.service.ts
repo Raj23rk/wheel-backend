@@ -230,6 +230,7 @@
 import {
   Injectable,
   BadRequestException,
+  InternalServerErrorException,
   Logger,
 } from '@nestjs/common';
 
@@ -336,16 +337,26 @@ export class OtpService {
       type: 'customer',
     };
 
-    const token =
-      this.jwtService.sign(
-        payload,
-        {
-          expiresIn: '30m',
-        },
-      );
+    try {
+      const token =
+        this.jwtService.sign(
+          payload,
+          {
+            expiresIn: '30m',
+          },
+        );
 
-    return {
-      token,
-    };
+      return {
+        token,
+      };
+    } catch (error: any) {
+      this.logger.error(
+        `Failed to generate JWT token for OTP verification: ${error.message}`,
+        error.stack,
+      );
+      throw new InternalServerErrorException(
+        'Failed to generate authentication token',
+      );
+    }
   }
 }
