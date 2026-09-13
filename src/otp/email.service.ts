@@ -1041,7 +1041,7 @@ Please do not share this code with anyone.
     customerEmail: string,
     offerName: string,
     couponCode: string,
-    validityDays: number = 10,
+    validityDays: number = 30,
     description?: string,
     terms?: string,
     shopOwnerEmail?: string,
