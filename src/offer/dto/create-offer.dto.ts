@@ -4,7 +4,7 @@ export class CreateOfferDto {
   @IsString()
   name: string;
 
-  @IsIn(['percentage', 'fixed', 'freebie', 'tryAgain'])
+  @IsIn(['percentage', 'fixed', 'freebie', 'tryAgain', 'bogo', 'exchange'])
   discountType: string;
 
   @IsNumber()

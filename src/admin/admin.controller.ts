@@ -1,4 +1,4 @@
-import { Controller, Get, Query, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
 import { AdminService } from './admin.service';
 import { SpinService } from '../spin/spin.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
@@ -28,5 +28,15 @@ export class AdminController {
   @Get('admins')
   getAdmins() {
     return this.adminService.findAllAdmins();
+  }
+
+  @Get('sync-offers')
+  syncOffersGet() {
+    return this.adminService.syncOffersAndWheel(true);
+  }
+
+  @Post('sync-offers')
+  syncOffersPost() {
+    return this.adminService.syncOffersAndWheel(true);
   }
 }

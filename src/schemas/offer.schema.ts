@@ -8,7 +8,7 @@ export class Offer {
   @Prop({ required: true })
   name: string;
 
-  @Prop({ required: true, enum: ['percentage', 'fixed', 'freebie', 'tryAgain'] })
+  @Prop({ required: true, enum: ['percentage', 'fixed', 'freebie', 'tryAgain', 'bogo', 'exchange'] })
   discountType: string;
 
   @Prop({ required: true, default: 0 })

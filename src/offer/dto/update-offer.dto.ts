@@ -6,7 +6,7 @@ export class UpdateOfferDto {
   name?: string;
 
   @IsOptional()
-  @IsIn(['percentage', 'fixed', 'freebie', 'tryAgain'])
+  @IsIn(['percentage', 'fixed', 'freebie', 'tryAgain', 'bogo', 'exchange'])
   discountType?: string;
 
   @IsOptional()
