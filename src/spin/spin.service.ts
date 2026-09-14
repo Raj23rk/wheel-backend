@@ -175,8 +175,8 @@ export class SpinService {
     const winningOffer = winningSegment.offerDoc;
     const segmentIndex = winningSegment.originalIndex ?? 0;
 
-    // 7. Create coupon (EXPIRES IN 10 DAYS per offer validity requirement)
-    const VALIDITY_DAYS = 10;
+    // 7. Create coupon (EXPIRES IN 30 DAYS per offer validity requirement)
+    const VALIDITY_DAYS = 30;
     const expiresAt = new Date(Date.now() + VALIDITY_DAYS * 24 * 60 * 60 * 1000);
     const coupon = await this.couponService.createCoupon(
       winningOffer._id.toString(),
